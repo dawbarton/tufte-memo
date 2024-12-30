@@ -4,16 +4,12 @@
 
 // Fonts used in front matter, sidenotes, bibliography, and captions
 #let sans-fonts = (
-    "Gill Sans MT",
-    "TeX Gyre Heros",
-    "Noto Sans"
-  )
+  "TeX Gyre Heros",
+)
 
 // Fonts used for headings and body copy
 #let serif-fonts = (
-  "Lucida Bright",
-  "New CM",
-  "Libertinus Serif",
+  "TeX Gyre Termes",
 )
 
 #let template(
@@ -58,7 +54,7 @@
 
   show figure.where(kind: raw): set figure.caption(position: top)
   show figure.where(kind: raw): set figure(supplement: [Code], numbering: "1")
-  show raw: set text(font: "Lucida Console", size: 10pt)
+  show raw: set text(font: "TeX Gyre Cursor", size: 10pt)
 
   // Equations
   set math.equation(numbering: "(1)")
@@ -281,7 +277,7 @@ Takes 2 optional keyword and 1 required argument:
     text(weight:"bold",super(context notecounter.display()))
   }
   text(size:9pt,font: sans-fonts,margin-note(if numbered {
-    text(weight:"bold",font:"Lucida Bright",size:11pt,{
+    text(weight:"bold",font:serif-fonts,size:11pt,{
       super(context notecounter.display())
       text(size: 9pt, " ")
     })

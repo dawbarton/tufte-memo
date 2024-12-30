@@ -1,4 +1,4 @@
-#import "@preview/drafting:0.2.0": *
+#import "@preview/drafting:0.2.1": *
 
 #let wideblock(content) = block(width:100%+2.5in,content)
 
@@ -13,7 +13,7 @@
 #let serif-fonts = (
   "Lucida Bright",
   "New CM",
-  "Linux Libertine",
+  "Libertinus Serif",
 )
 
 #let template(
@@ -53,9 +53,9 @@
 
   show figure.where(kind: table): set figure.caption(position: top)
   show figure.where(kind: table): set figure(numbering: "I")
-  
+
   show figure.where(kind: image): set figure(supplement: [Figure], numbering: "1")
-  
+
   show figure.where(kind: raw): set figure.caption(position: top)
   show figure.where(kind: raw): set figure(supplement: [Code], numbering: "1")
   show raw: set text(font: "Lucida Console", size: 10pt)
@@ -166,9 +166,7 @@
   set par(
     // justify: true,
     leading: 0.65em,
-    first-line-indent: 1em
-  )
-  show par: set block(
+    first-line-indent: 1em,
     spacing: 0.65em
   )
 
@@ -235,7 +233,7 @@
     linebreak()
     if document-number != none {document-number}
   })
-  
+
 
   if abstract != none {abstractblock(abstract)}
   if toc {tocblock()}
@@ -280,11 +278,11 @@ Takes 2 optional keyword and 1 required argument:
 #let note(dy:-2em, numbered:true, content) = {
   if numbered {
     notecounter.step()
-    text(weight:"bold",super(notecounter.display()))
+    text(weight:"bold",super(context notecounter.display()))
   }
   text(size:9pt,font: sans-fonts,margin-note(if numbered {
     text(weight:"bold",font:"Lucida Bright",size:11pt,{
-      super(notecounter.display())
+      super(context notecounter.display())
       text(size: 9pt, " ")
     })
     content
